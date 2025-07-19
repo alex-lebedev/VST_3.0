@@ -26,21 +26,6 @@ body {
   overflow-x: hidden;
   line-height: 1.5;
 }
-.instructions h2 {
-  font-size: 1.6em;
-  margin-bottom: 8px;
-}
-
-#start-screen p {
-  margin: 8px 0;
-  font-weight: 300;
-}
-
-#start-screen .btn-keep {
-  margin-top: 16px;
-  width: 60%;
-  font-size: 1.2em;
-}
 
 .instructions {
   margin: 70px 12px 12px;

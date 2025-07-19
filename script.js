@@ -199,16 +199,5 @@ keepArrow.addEventListener('click', () => {
   if (top) swipe(top, 'keep');
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const startScreen = document.getElementById('start-screen');
-  const mainApp = document.getElementById('main-app');
-  const startButton = document.getElementById('start-button');
-
-  startButton.addEventListener('click', () => {
-    // Скрываем экран инструкций и показываем основной интерфейс
-    startScreen.style.display = 'none';
-    mainApp.style.display = 'block';
-    // Запускаем первый этап
-    loadStage();
-  });
-});
+// Старт
+loadStage();
