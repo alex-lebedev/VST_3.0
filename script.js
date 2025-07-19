@@ -191,11 +191,11 @@ function showResult(finalValues) {
 
 // Кнопки-резерв (по клику симуляция)
 discardArrow.addEventListener('click', () => {
-  const top = cardContainer.querySelector('.card');
+  const top = cardContainer.lastElementChild; // теперь берём именно верхнюю карточку
   if (top) swipe(top, 'discard');
 });
 keepArrow.addEventListener('click', () => {
-  const top = cardContainer.querySelector('.card');
+  const top = cardContainer.lastElementChild; // теперь берём именно верхнюю карточку
   if (top) swipe(top, 'keep');
 });
 
