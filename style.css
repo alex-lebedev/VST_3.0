@@ -183,6 +183,59 @@ body {
   margin-top: 4px;
 }
 
+/* выделение числа жёлтым в инструкции */
+.instructions .highlight {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Экран приветствия */
+.welcome-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  z-index: 1000;
+}
+
+.welcome-screen h1 {
+  font-size: 2em;
+  margin-bottom: 16px;
+  color: var(--accent);
+}
+
+.welcome-screen p {
+  max-width: 400px;
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+/* Кнопка «Далее» на приветственном экране */
+.btn-start {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 1.1em;
+  padding: 12px 32px;
+  border: 2px solid var(--accent);
+  border-radius: 30px;
+  background: var(--button-bg);
+  color: var(--accent);
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.btn-start:hover {
+  background: var(--button-hover-bg);
+  transform: translateY(-2px);
+}
+
 @media (max-width: 400px) {
   .card-container { height: 350px; }
 }

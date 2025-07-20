@@ -7,33 +7,47 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="instructions" class="instructions">
-    Свайпните влево, чтобы отбросить, или вправо, чтобы сохранить.
+
+  <!-- 1) Экран приветствия -->
+  <div id="welcome-screen" class="welcome-screen">
+    <h1>Добро пожаловать!</h1>
+    <p>
+      Этот тест поможет вам разобраться в том, что действительно важно. 
+      Вы будете сортировать карточки с ценностями — свайпом влево «Отбросить» 
+      и вправо «Сохранить». На каждом этапе останется только половина самых 
+      приоритетных для вас ценностей, и в конце вы получите ваш топ‑5.
+    </p>
+    <button id="start-btn" class="btn-start">Далее</button>
   </div>
 
-  <!-- новый промпт -->
-  <div id="prompt" class="prompt">ВЫБЕРИ</div>
-
-  <div id="card-container" class="card-container"></div>
-
-  <div id="arrow-buttons" class="arrow-buttons">
-    <button id="discardArrow" class="btn-discard">← Отбросить</button>
-    <button id="keepArrow" class="btn-keep">Сохранить →</button>
-  </div>
-
-  <div class="pile-container">
-    <!-- сперва — отброшенные -->
-    <div class="pile" id="discard">
-      <h2>Отбросить <span class="count">(0)</span></h2>
+  <!-- 2) Весь ваш старый контент — скрыт по умолчанию -->
+  <div id="main-content" style="display:none;">
+    <div id="instructions" class="instructions">
+      Свайпните влево, чтобы отбросить, или вправо, чтобы сохранить.
     </div>
-    <!-- потом — сохранённые -->
-    <div class="pile" id="keep">
-      <h2>Сохранить <span class="count">(0)</span></h2>
-    </div>
-  </div>
 
-  <div id="result-screen" class="result-screen" style="display:none"></div>
+    <div id="prompt" class="prompt">ВЫБЕРИ</div>
+
+    <div id="card-container" class="card-container"></div>
+
+    <div id="arrow-buttons" class="arrow-buttons">
+      <button id="discardArrow" class="btn-discard">← Отбросить</button>
+      <button id="keepArrow" class="btn-keep">Сохранить →</button>
+    </div>
+
+    <div class="pile-container">
+      <div class="pile" id="discard">
+        <h2>Отбросить <span class="count">(0)</span></h2>
+      </div>
+      <div class="pile" id="keep">
+        <h2>Сохранить <span class="count">(0)</span></h2>
+      </div>
+    </div>
+
+    <div id="result-screen" class="result-screen" style="display:none"></div>
+  </div>
 
   <script src="script.js" defer></script>
 </body>
 </html>
+

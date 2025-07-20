@@ -74,6 +74,18 @@ const cardContainer = document.getElementById('card-container');
 const keepPile = document.getElementById('keep');
 const discardPile = document.getElementById('discard');
 const instr = document.getElementById('instructions');
+const welcomeScreen = document.getElementById('welcome-screen');
+const mainContent   = document.getElementById('main-content');
+const startBtn      = document.getElementById('start-btn');
+
+// При клике «Далее» показываем тест и запускаем первую стадию
+startBtn.addEventListener('click', () => {
+  welcomeScreen.style.display = 'none';
+  mainContent.style.display   = 'block';
+  loadStage();
+});
+
+
 const resultScreen = document.getElementById('result-screen');
 const discardArrow = document.getElementById('discardArrow');
 const keepArrow = document.getElementById('keepArrow');
@@ -83,11 +95,12 @@ const threshold = 80;
 
 // Обновление инструкции динамически
 function updateInstructions() {
-  const half = Math.ceil(currentPool.length / 2);
+  const total = currentPool.length;
+  const half = Math.ceil(total / 2);
   if (half > 5) {
-    instr.textContent = `Оставьте не более ${half} карточек.`;
+    instr.innerHTML = `Оставьте не более <span class="highlight">${half}</span> карточек из ${total}.`;
   } else {
-    instr.textContent = `Оставьте ровно 5 карточек.`;
+    instr.innerHTML = `Оставьте ровно <span class="highlight">5</span> карточек из ${total}.`;
   }
 }
 
@@ -136,7 +149,6 @@ function swipe(card, action) {
   }, { once: true });
 }
 
-// После обработки всей текущей колоды
 // После обработки всей текущей колоды
 function onDeckCleared() {
   // Собираем выбранные карточки
@@ -198,6 +210,3 @@ keepArrow.addEventListener('click', () => {
   const top = cardContainer.lastElementChild; // теперь берём именно верхнюю карточку
   if (top) swipe(top, 'keep');
 });
-
-// Старт
-loadStage();
