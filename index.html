@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -12,6 +11,9 @@
     Свайпните влево, чтобы отбросить, или вправо, чтобы сохранить.
   </div>
 
+  <!-- новый промпт -->
+  <div id="prompt" class="prompt">ВЫБЕРИ</div>
+
   <div id="card-container" class="card-container"></div>
 
   <div id="arrow-buttons" class="arrow-buttons">
@@ -20,11 +22,13 @@
   </div>
 
   <div class="pile-container">
-    <div class="pile" id="keep">
-      <h2>Сохранить <span class="count">(0)</span></h2>
-    </div>
+    <!-- сперва — отброшенные -->
     <div class="pile" id="discard">
       <h2>Отбросить <span class="count">(0)</span></h2>
+    </div>
+    <!-- потом — сохранённые -->
+    <div class="pile" id="keep">
+      <h2>Сохранить <span class="count">(0)</span></h2>
     </div>
   </div>
 

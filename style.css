@@ -37,6 +37,15 @@ body {
   font-weight: 500;
 }
 
+/* новый жёлтый промпт под инструкцией */
+.prompt {
+  margin: 8px 12px;
+  text-align: center;
+  color: var(--accent);
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
 .card-container {
   position: relative;
   margin: 20px auto;
