@@ -191,14 +191,66 @@ function loadStage() {
 
 // Показ результата
 function showResult(finalValues) {
+  // прячем инструкцию и стопки
   document.querySelector('.pile-container').style.display = 'none';
-  cardContainer.style.display = 'none';
+  document.getElementById('prompt').style.display = 'none';
   instr.style.display = 'none';
+  // прячем карточки
+  cardContainer.style.display = 'none';
+  // показываем экран результата
   resultScreen.style.display = 'block';
+
+  // теперь вставляем HTML
   const list = finalValues.map((v,i) =>
     `<div><strong>${i+1}. ${v.name}</strong><p>${v.description}</p></div>`
   ).join('');
-  resultScreen.innerHTML = `<h2>Ваши топ-${finalValues.length} ценности</h2>${list}`;
+  resultScreen.innerHTML = `
+    <h2>Ваши топ-${finalValues.length} ценности</h2>
+    ${list}
+    <hr>
+    <p>Хотите получить индивидуальный разбор и новости в тему на почту?</p>
+    <form id="lead-form">
+      <input type="email" id="email-input"
+             placeholder="ваш e‑mail" required
+             style="width:100%; padding:8px; margin-bottom:8px;">
+      <button type="submit" style="padding:8px 16px;">Получить на почту</button>
+    </form>
+    <div id="form-msg" style="margin-top:12px;"></div>
+  `;  // повесим обработчик
+  document
+    .getElementById('lead-form')
+    .addEventListener('submit', e => {
+      e.preventDefault();
+      const email = document.getElementById('email-input').value;
+
+      // Собираем параметры
+      const params = new URLSearchParams();
+      params.append("entry.31354551", email);              // email
+      params.append("entry.966123078", finalValues[0].name); // Value 1
+      params.append("entry.416258899", finalValues[1].name); // Value 2
+      params.append("entry.828951366", finalValues[2].name); // Value 3
+      params.append("entry.900630693",   finalValues[3].name); // Value 4
+      params.append("entry.187289491",  finalValues[4].name); // Value 5
+      fetch(
+        'https://docs.google.com/forms/d/e/1FAIpQLSck5oDr3fRmKq313E8e09wodhQQl-WwBwtE4-Rdj7wy1OGENQ/formResponse',
+        {
+          method: 'POST',
+          mode: 'no-cors',               // отключаем CORS-проверку
+          body: params
+        }
+      )
+      .then(() => {
+        // даже если нет ответа, считаем, что ушло
+        document.getElementById('form-msg').textContent =
+          'Спасибо! Ваш лид принят.';
+        // по желанию: скрыть форму
+        document.getElementById('lead-form').style.display = 'none';
+      })
+      .catch(() => {
+        document.getElementById('form-msg').textContent =
+          'Что‑то пошло не так. Попробуйте чуть позже.';
+      });
+    });
 }
 
 // Кнопки-резерв (по клику симуляция)
